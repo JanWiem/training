@@ -1,7 +1,7 @@
 /* Satz – Service Worker
    Cache-first für die App-Shell, damit die App offline (z. B. im Keller-Gym) startet.
    Bei jedem Deploy CACHE hochzählen, dann wird neu gecacht. */
-const CACHE = "satz-v1";
+const CACHE = "satz-v2";
 const SHELL = [
   "./",
   "./index.html",
