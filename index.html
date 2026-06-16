@@ -99,17 +99,17 @@
 
   /* ---------- ACTIVE (focus mode) ---------- */
   .focus{padding:0 16px calc(var(--safe-b) + 130px);}
-  .timerbar{position:sticky;top:0;z-index:6;background:linear-gradient(180deg,var(--bg2) 78%,rgba(251,251,250,0));padding:max(14px,calc(env(safe-area-inset-top,0px) + 6px)) 0 10px;}
-  .timerbar .inner{background:var(--ink);color:#fff;border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
-  .timerbar .lbl{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;display:flex;align-items:center;gap:6px;}
-  .timerbar .t{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:30px;letter-spacing:.01em;margin-top:3px;}
-  .timerbar .plan{font-size:11.5px;opacity:.6;margin-top:1px;}
+  .timerbar{position:sticky;top:0;z-index:6;background:linear-gradient(180deg,var(--bg2) 80%,rgba(251,251,250,0));padding:max(8px,calc(env(safe-area-inset-top,0px) + 2px)) 16px 8px;}
+  .timerbar .inner{background:var(--ink);color:#fff;border-radius:14px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .timerbar .lbl{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;display:flex;align-items:center;gap:6px;}
+  .timerbar .t{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:25px;letter-spacing:.01em;margin-top:1px;line-height:1.05;}
+  .timerbar .plan{font-size:11px;opacity:.6;margin-top:1px;}
   .dotpulse{width:7px;height:7px;border-radius:50%;background:#5BB98C;animation:pulse 2s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-  .endbtn{background:rgba(255,255,255,.13);color:#fff;font-weight:600;font-size:14px;padding:10px 14px;border-radius:10px;}
+  .endbtn{background:rgba(255,255,255,.13);color:#fff;font-weight:600;font-size:13.5px;padding:8px 13px;border-radius:10px;}
   .endbtn:active{background:rgba(255,255,255,.24);}
   .tbtns{display:flex;align-items:center;gap:8px;}
-  .awakebtn{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.13);color:#fff;display:grid;place-items:center;flex:none;transition:transform .1s,background .15s;}
+  .awakebtn{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.13);color:#fff;display:grid;place-items:center;flex:none;transition:transform .1s,background .15s;}
   .awakebtn svg{width:19px;height:19px;}
   .awakebtn.on{background:#fff;color:var(--ink);}
   .awakebtn:active{transform:scale(.95);}
@@ -271,6 +271,21 @@
   .tlabel{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:14px 2px 6px;}
   .tarea{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--bg2);border:1px solid var(--line-strong);border-radius:10px;padding:11px;line-height:1.5;resize:vertical;}
   .tarea:focus{outline:none;border-color:var(--accent);background:#fff;}
+  .modes3 button{font-size:13px;padding:10px 6px;}
+  .tag.time{background:#FBF1E0;color:#9A6A1E;}
+  .btn.time{background:#B6791F;color:#fff;} .btn.time:active{background:#9A6A1E;}
+  .equiptag{font-size:11px;font-weight:600;color:var(--muted);background:var(--bg2);border:1px solid var(--line);padding:2px 7px;border-radius:6px;}
+  .loadrow{display:flex;align-items:center;gap:8px;margin-top:11px;}
+  .equipsel{flex:1;min-width:0;font-family:inherit;font-size:14px;font-weight:600;color:var(--ink);background:var(--bg2);border:1px solid var(--line-strong);border-radius:10px;padding:11px 28px 11px 11px;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239B9A97' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;}
+  .winputwrap{flex:none;display:flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--line-strong);border-radius:10px;padding:0 11px;}
+  .winput{width:52px;border:none;background:transparent;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:15px;color:var(--ink);padding:11px 0;text-align:right;-moz-appearance:textfield;}
+  .winput:focus{outline:none;} .winput::-webkit-outer-spin-button,.winput::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  .winputwrap .kg{font-size:12.5px;color:var(--muted);font-weight:600;}
+  .setchip .iw{font-size:10.5px;color:var(--accent-d);font-weight:700;}
+  .phaserow{display:flex;gap:9px;margin:2px 0 16px;}
+  .phaserow .ph{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;}
+  .phaserow .phv{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:17px;display:block;}
+  .phaserow .phl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-top:2px;display:block;}
 </style>
 </head>
 <body>
@@ -321,7 +336,15 @@ function fmtClock(sec){sec=Math.max(0,Math.floor(sec));const h=Math.floor(sec/36
 function durLabel(sec){const m=Math.round(sec/60);if(m<1)return "<1 min";if(m<60)return m+" min";const h=Math.floor(m/60),r=m%60;return r?h+" h "+r+" min":h+" h";}
 function vib(p){try{navigator.vibrate&&navigator.vibrate(p);}catch(e){}}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
-function rememberLib(name,mode,v){const k=name.toLowerCase();const cur=state.lib[k];state.lib[k]={name,mode,last:v,best:Math.max(v,cur?.best||0)};}
+function rememberLib(name,mode,v,w){const k=name.toLowerCase();const cur=state.lib[k]||{};state.lib[k]={...cur,name,mode,last:v,best:Math.max(v,cur.best||0)};if(w!==undefined)state.lib[k].lastW=w;}
+
+/* Übungstypen: reps (Wdh) · hold (Halten) · time (Zeit/Aufwärmen) */
+const isTimed   = m => m==="hold"||m==="time";
+const modeLabel = m => m==="hold"?"Halten":(m==="time"?"Zeit":"Wdh");
+const modeTag   = m => m==="hold"?"hold":(m==="time"?"time":"reps");
+const fmtVal    = (m,v) => isTimed(m)?fmtClock(v):String(v);
+const EQUIP=["","Kettlebell","Kurzhantel","Langhantel","Band","Gewichtsweste","Sonstiges"];
+function loadLabel(ex,s){ if(!s||!s.w) return ""; const eq=ex.equip?esc(ex.equip)+" ":""; return ` · ${eq}${s.w} kg`; }
 
 const app=document.getElementById("app");
 
@@ -429,10 +452,11 @@ function guideCard(){
   }
   const it=g.queue[g.idx], nx=g.queue[g.idx+1];
   let inner;
-  if(it.mode==="hold"){
+  if(isTimed(it.mode)){
+    const lbl=it.mode==="time"?"Zeit":"Halten";
     inner = (ui.hold&&ui.hold.guide)
-      ? `<div class="holdrun"><div class="hv num" id="ghold">${fmtClock((Date.now()-ui.hold.start)/1000)}</div><div class="hu">Halten · Ziel ${fmtClock(it.target)}</div></div><button class="btn dark logbtn" id="gstop">Stopp &amp; speichern</button>`
-      : `<button class="btn hold" id="ghstart">${icoClock()} Halten starten · Ziel ${fmtClock(it.target)}</button>`;
+      ? `<div class="holdrun"><div class="hv num" id="ghold">${fmtClock((Date.now()-ui.hold.start)/1000)}</div><div class="hu">${lbl} · Ziel ${fmtClock(it.target)}</div></div><button class="btn dark logbtn" id="gstop">Stopp &amp; speichern</button>`
+      : `<button class="btn ${it.mode==="time"?"time":"hold"}" id="ghstart">${icoClock()} ${lbl} starten · Ziel ${fmtClock(it.target)}</button>`;
   } else {
     inner = `<div class="stepper"><button class="step" data-gstep="-1">–</button>
       <div class="stepval"><div class="v num" id="guideval" data-val="${it.target}">${it.target}</div><div class="u">Wdh · Ziel ${it.target}</div></div>
@@ -450,25 +474,43 @@ function guideCard(){
 }
 
 /* ---- exercise card ---- */
+function weightRow(ex,w){
+  const opts=EQUIP.map(e=>`<option value="${e}" ${ex.equip===e?"selected":""}>${e||"ohne Gerät"}</option>`).join("");
+  return `<div class="loadrow">
+     <select class="equipsel" data-eq="${ex.id}">${opts}</select>
+     <div class="winputwrap"><input class="winput" id="w-${ex.id}" type="number" inputmode="decimal" step="0.5" min="0" value="${w?w:""}" placeholder="0" /><span class="kg">kg</span></div>
+   </div>`;
+}
 function exCard(ex,guided){
-  const hold=ex.mode==="hold", holding=ui.hold&&ui.hold.exId===ex.id;
-  const libBest=state.lib[ex.name.toLowerCase()]?.best||0;
-  const last=ex.sets.length?ex.sets[ex.sets.length-1].v:(state.lib[ex.name.toLowerCase()]?.last ?? (hold?30:10));
+  const running=ui.hold&&ui.hold.exId===ex.id;
+  const lib=state.lib[ex.name.toLowerCase()]||{};
+  const libBest=lib.best||0;
+  const lastV=ex.sets.length?ex.sets[ex.sets.length-1].v:(lib.last ?? (ex.mode==="time"?60:(ex.mode==="hold"?30:10)));
+  const lastW=ex.sets.length?(ex.sets[ex.sets.length-1].w||0):(lib.lastW||0);
   let adder="";
   if(!guided){
-    if(hold){
-      adder = holding
+    if(ex.mode==="hold"){
+      adder = running
         ? `<div class="holdrun"><div class="hv num" id="hold-${ex.id}">${fmtClock((Date.now()-ui.hold.start)/1000)}</div><div class="hu">Halten läuft</div></div><button class="btn dark logbtn" data-stop="${ex.id}">Stopp &amp; speichern</button>`
-        : `<button class="btn hold" data-holdstart="${ex.id}">${icoClock()} Halten starten</button>${ex.sets.length?"":`<div class="lasthint">Antippen · halten · wieder antippen.</div>`}`;
+        : `${weightRow(ex,lastW)}<button class="btn hold" data-holdstart="${ex.id}">${icoClock()} Halten starten</button>${ex.sets.length?"":`<div class="lasthint">Antippen · halten · wieder antippen.</div>`}`;
+    } else if(ex.mode==="time"){
+      adder = running
+        ? `<div class="holdrun"><div class="hv num" id="hold-${ex.id}">${fmtClock(Math.max(0,(ui.hold.target||0)-(Date.now()-ui.hold.start)/1000))}</div><div class="hu">Zeit läuft</div></div><button class="btn dark logbtn" data-stop="${ex.id}">Stopp &amp; speichern</button>`
+        : `<div class="stepper"><button class="step" data-tstep="${ex.id}|-1">–</button>
+            <div class="stepval"><div class="v num" id="tt-${ex.id}" data-val="${lastV||60}">${fmtClock(lastV||60)}</div><div class="u">Dauer</div></div>
+            <button class="step" data-tstep="${ex.id}|1">+</button></div>
+            <button class="btn time logbtn" data-timestart="${ex.id}">${icoClock()} Zeit starten</button>`;
     } else {
       adder = `<div class="stepper"><button class="step" data-step="${ex.id}|-1">–</button>
-        <div class="stepval"><div class="v num" id="rep-${ex.id}" data-val="${last}">${last}</div><div class="u">Wdh</div></div>
+        <div class="stepval"><div class="v num" id="rep-${ex.id}" data-val="${lastV}">${lastV}</div><div class="u">Wdh</div></div>
         <button class="step" data-step="${ex.id}|1">+</button></div>
+        ${weightRow(ex,lastW)}
         <button class="btn primary logbtn" data-logrep="${ex.id}">Satz speichern</button>`;
     }
   }
+  const equipTag = ex.equip?`<span class="equiptag">${esc(ex.equip)}</span>`:"";
   return `<div class="excard">
-    <div class="ex-head"><span class="name">${esc(ex.name)}</span><span class="tag ${hold?"hold":"reps"}">${hold?"Halten":"Wdh"}</span>
+    <div class="ex-head"><span class="name">${esc(ex.name)}</span>${equipTag}<span class="tag ${modeTag(ex.mode)}">${modeLabel(ex.mode)}</span>
       <button class="info" data-info="${esc(ex.name)}">${icoInfo()}</button>
       ${guided?"":`<button class="x" data-delex="${ex.id}">✕</button>`}</div>
     ${ ex.sets.length?`<div class="sets">${ex.sets.map((s,i)=>setChip(ex,s,i,libBest)).join("")}</div>`:"" }
@@ -477,8 +519,10 @@ function exCard(ex,guided){
 }
 function setChip(ex,s,i,best){
   const pr = best>0 && s.v>=best && s.v===Math.max(...ex.sets.map(x=>x.v));
-  const txt = ex.mode==="hold"?fmtClock(s.v):s.v;
-  return `<button class="setchip ${pr?"pr":""}" data-rmset="${ex.id}|${i}"><span class="i">${i+1}</span>${txt}${ex.mode==="hold"?"":'<span class="i">Wdh</span>'}<span class="rm">✕</span></button>`;
+  const txt = fmtVal(ex.mode,s.v);
+  const unit = isTimed(ex.mode)?"":'<span class="i">Wdh</span>';
+  const wt = s.w?`<span class="iw">${s.w} kg</span>`:"";
+  return `<button class="setchip ${pr?"pr":""}" data-rmset="${ex.id}|${i}"><span class="i">${i+1}</span>${txt}${unit}${wt}<span class="rm">✕</span></button>`;
 }
 
 /* ---- composer ---- */
@@ -487,9 +531,10 @@ function composerHTML(){
   return `<div class="composer">
     <input id="exname" placeholder="Übung – z. B. Liegestütze, Plank" list="lib" autocomplete="off" autocapitalize="words" />
     <datalist id="lib">${opts}</datalist>
-    <div class="modes">
-      <button data-mode="reps" class="${ui.compMode==="reps"?"sel":""}">Wiederholungen</button>
-      <button data-mode="hold" class="${ui.compMode==="hold"?"sel":""}">Halten (Zeit)</button>
+    <div class="modes modes3">
+      <button data-mode="reps" class="${ui.compMode==="reps"?"sel":""}">Wdh</button>
+      <button data-mode="hold" class="${ui.compMode==="hold"?"sel":""}">Halten</button>
+      <button data-mode="time" class="${ui.compMode==="time"?"sel":""}">Zeit</button>
     </div>
     <button class="btn dark sm" id="addex" style="margin-top:9px">Hinzufügen</button>
   </div>`;
@@ -505,8 +550,8 @@ function bindActive(){
   if(addex){
     const inp=document.getElementById("exname");
     const doAdd=()=>{const name=(inp.value||"").trim();if(!name)return;const key=name.toLowerCase();
-      const mode=state.lib[key]?.mode||ui.compMode;
-      state.active.exercises.push({id:uid(),name,mode,sets:[]});
+      const lib=state.lib[key]||{};const mode=lib.mode||ui.compMode;
+      state.active.exercises.push({id:uid(),name,mode,sets:[],equip:lib.equip||""});
       ui.showComposer=false;save();render();};
     addex.onclick=doAdd;
     inp.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();doAdd();}};
@@ -516,9 +561,13 @@ function bindActive(){
   app.querySelectorAll("[data-delex]").forEach(b=>b.onclick=()=>{state.active.exercises=state.active.exercises.filter(e=>e.id!==b.dataset.delex);if(ui.hold&&!ui.hold.guide&&!state.active.exercises.find(e=>e.id===ui.hold.exId))ui.hold=null;save();render();});
   app.querySelectorAll("[data-rmset]").forEach(b=>b.onclick=()=>{const[id,i]=b.dataset.rmset.split("|");const ex=state.active.exercises.find(e=>e.id===id);if(ex){ex.sets.splice(+i,1);save();render();}});
   app.querySelectorAll("[data-step]").forEach(b=>b.onclick=()=>{const[id,d]=b.dataset.step.split("|");const el=document.getElementById("rep-"+id);let v=Math.max(1,(+el.dataset.val)+(+d));el.dataset.val=v;el.textContent=v;vib(7);});
-  app.querySelectorAll("[data-logrep]").forEach(b=>b.onclick=()=>{const id=b.dataset.logrep,ex=state.active.exercises.find(e=>e.id===id);const v=+document.getElementById("rep-"+id).dataset.val;ex.sets.push({v});rememberLib(ex.name,"reps",v);vib(16);save();render();});
-  app.querySelectorAll("[data-holdstart]").forEach(b=>b.onclick=()=>{ui.hold={exId:b.dataset.holdstart,start:Date.now()};vib(11);render();});
-  app.querySelectorAll("[data-stop]").forEach(b=>b.onclick=()=>{const id=b.dataset.stop,ex=state.active.exercises.find(e=>e.id===id);const v=Math.round((Date.now()-ui.hold.start)/1000);ex.sets.push({v});rememberLib(ex.name,"hold",v);ui.hold=null;vib([16,40,16]);save();render();});
+  app.querySelectorAll("[data-tstep]").forEach(b=>b.onclick=()=>{const[id,d]=b.dataset.tstep.split("|");const el=document.getElementById("tt-"+id);let v=Math.max(5,(+el.dataset.val)+(+d)*15);el.dataset.val=v;el.textContent=fmtClock(v);vib(7);});
+  app.querySelectorAll(".equipsel").forEach(s=>s.onchange=()=>{const ex=state.active.exercises.find(e=>e.id===s.dataset.eq);if(ex){ex.equip=s.value;const k=ex.name.toLowerCase();if(state.lib[k])state.lib[k].equip=s.value;save();render();}});
+  const readW=id=>{const el=document.getElementById("w-"+id);if(!el)return 0;const w=parseFloat((el.value||"").replace(",","."));return isNaN(w)||w<0?0:w;};
+  app.querySelectorAll("[data-logrep]").forEach(b=>b.onclick=()=>{const id=b.dataset.logrep,ex=state.active.exercises.find(e=>e.id===id);const v=+document.getElementById("rep-"+id).dataset.val;const w=readW(id);ex.sets.push(w?{v,w}:{v});rememberLib(ex.name,"reps",v,w);vib(16);save();render();});
+  app.querySelectorAll("[data-holdstart]").forEach(b=>b.onclick=()=>{const id=b.dataset.holdstart;ui.hold={exId:id,start:Date.now(),w:readW(id)};vib(11);render();});
+  app.querySelectorAll("[data-timestart]").forEach(b=>b.onclick=()=>{const id=b.dataset.timestart;const t=+document.getElementById("tt-"+id).dataset.val;ui.hold={exId:id,start:Date.now(),target:t};vib(11);render();});
+  app.querySelectorAll("[data-stop]").forEach(b=>b.onclick=()=>{const id=b.dataset.stop,ex=state.active.exercises.find(e=>e.id===id);let v=Math.round((Date.now()-ui.hold.start)/1000);if(ui.hold.target)v=Math.min(v,ui.hold.target);const w=ui.hold.w||0;ex.sets.push(w?{v,w}:{v});rememberLib(ex.name,ex.mode,v,w);ui.hold=null;vib([16,40,16]);save();render();});
   // guide
   const gstep=app.querySelectorAll("[data-gstep]");gstep.forEach(b=>b.onclick=()=>{const el=document.getElementById("guideval");let v=Math.max(1,(+el.dataset.val)+(+b.dataset.gstep));el.dataset.val=v;el.textContent=v;vib(7);});
   const glog=document.getElementById("glog");if(glog)glog.onclick=()=>guideLog(+document.getElementById("guideval").dataset.val);
@@ -529,7 +578,7 @@ function bindActive(){
 }
 
 function findOrCreateEx(name,mode){let ex=state.active.exercises.find(e=>e.name.toLowerCase()===name.toLowerCase()&&e.mode===mode);if(!ex){ex={id:uid(),name,mode,sets:[]};state.active.exercises.push(ex);}return ex;}
-function guideLog(v){const g=state.active.guide,it=g.queue[g.idx];const ex=findOrCreateEx(it.name,it.mode);ex.sets.push({v});rememberLib(it.name,it.mode,v);g.idx++;if(g.idx<g.queue.length&&it.rest>0)ui.rest={end:Date.now()+it.rest*1000};vib(18);save();render();}
+function guideLog(v){const g=state.active.guide,it=g.queue[g.idx];const ex=findOrCreateEx(it.name,it.mode);ex.sets.push({v});rememberLib(it.name,it.mode,v);g.idx++;addRestLog();if(g.idx<g.queue.length&&it.rest>0)ui.rest={end:Date.now()+it.rest*1000,start:Date.now()};vib(18);save();render();}
 
 /* ---- rest ---- */
 function restBarHTML(){
@@ -537,7 +586,8 @@ function restBarHTML(){
   return `<div class="restbar"><div class="box"><span class="label">Pause</span><div class="chips"><button class="chip" data-rest="30">30s</button><button class="chip" data-rest="60">60s</button><button class="chip" data-rest="90">90s</button></div></div></div>`;
 }
 function updateRestZone(){const z=document.getElementById("restzone");if(!z)return;z.innerHTML=restBarHTML();bindRest();}
-function bindRest(){app.querySelectorAll("[data-rest]").forEach(b=>b.onclick=()=>{ui.rest={end:Date.now()+(+b.dataset.rest)*1000};vib(10);updateRestZone();});const c=document.getElementById("restcancel");if(c)c.onclick=()=>{ui.rest=null;updateRestZone();};}
+function addRestLog(){ if(ui.rest&&ui.rest.start&&state.active){ const e=Math.round((Date.now()-ui.rest.start)/1000); if(e>0){ state.active.restSec=(state.active.restSec||0)+e; state.active.restCount=(state.active.restCount||0)+1; } } }
+function bindRest(){app.querySelectorAll("[data-rest]").forEach(b=>b.onclick=()=>{addRestLog();ui.rest={end:Date.now()+(+b.dataset.rest)*1000,start:Date.now()};save();vib(10);updateRestZone();});const c=document.getElementById("restcancel");if(c)c.onclick=()=>{addRestLog();ui.rest=null;save();updateRestZone();};}
 
 /* ===========================================================
    PROGRESS TAB
@@ -564,16 +614,17 @@ function renderProgress(){
   app.querySelectorAll("[data-info]").forEach(b=>b.onclick=()=>openTech(b.dataset.info));
 }
 function progressCard(o){
-  const hold=o.mode==="hold";
+  const timed=isTimed(o.mode);
   const recent=o.sets.slice(-8);
   const max=Math.max(...recent.map(s=>s.v),1);
   const bestEver=o.best;
+  const barcls=o.mode==="reps"?"":"hold";
   const bars=recent.map(s=>{const h=Math.max(8,Math.round(s.v/max*100));const top=s.v>=bestEver;
-    return `<div class="bcol"><div class="bar ${hold?"hold":""} ${top?"top":""}" style="height:${h}%"></div><div class="bv">${hold?fmtClock(s.v):s.v}</div></div>`;}).join("");
+    return `<div class="bcol"><div class="bar ${barcls} ${top?"top":""}" style="height:${h}%"></div><div class="bv">${fmtVal(o.mode,s.v)}</div></div>`;}).join("");
   const d=new Date(o.last);
   return `<div class="pcard" data-info="${esc(o.name)}">
-    <div class="top"><span class="tag ${hold?"hold":"reps"}">${hold?"Halten":"Wdh"}</span><span class="nm">${esc(o.name)}</span>
-      <span class="best num">${hold?fmtClock(bestEver):bestEver}<span class="bl">Best</span></span></div>
+    <div class="top"><span class="tag ${modeTag(o.mode)}">${modeLabel(o.mode)}</span><span class="nm">${esc(o.name)}</span>
+      <span class="best num">${fmtVal(o.mode,bestEver)}<span class="bl">Best</span></span></div>
     <div class="bars">${bars}</div>
     <div class="footmeta">${o.sessions} Einheit${o.sessions>1?"en":""} · ${o.sets.length} Sätze · zuletzt ${d.getDate()}. ${MONTHS[d.getMonth()]} · Technik ansehen</div>
   </div>`;
@@ -582,7 +633,7 @@ function progressCard(o){
 /* ===========================================================
    PLANS TAB + EDITOR
    =========================================================== */
-function planEst(p){let s=0;p.steps.forEach(st=>{const per=st.mode==="hold"?st.target:st.target*3;s+=st.sets*per+st.sets*st.rest;});return Math.max(1,Math.round(s/60));}
+function planEst(p){let s=0;p.steps.forEach(st=>{const per=isTimed(st.mode)?st.target:st.target*3;s+=st.sets*per+st.sets*st.rest;});return Math.max(1,Math.round(s/60));}
 /* ---- Excel / CSV Im- & Export ---- */
 const XLS_HEADER=["Plan","Übung","Typ","Ziel","Sätze","Pause","Cues","Video"];
 function techCell(name){const t=state.tech[(name||"").toLowerCase()]||{};return [(t.cues||[]).join(" | "), t.link||""];}
@@ -590,7 +641,7 @@ function plansToRows(plans){
   const rows=[XLS_HEADER.slice()];
   plans.forEach(p=>{
     if(!p.steps.length){ rows.push([p.name,"","","","","","",""]); return; }
-    p.steps.forEach(s=>{const[cu,vi]=techCell(s.name);rows.push([p.name,s.name,s.mode==="hold"?"Halten":"Wdh",s.target,s.sets,s.rest,cu,vi]);});
+    p.steps.forEach(s=>{const[cu,vi]=techCell(s.name);rows.push([p.name,s.name,modeLabel(s.mode),s.target,s.sets,s.rest,cu,vi]);});
   });
   return rows;
 }
@@ -628,8 +679,8 @@ function rowsToPlans(rows){
     if(!byName.has(plan)){ byName.set(plan,{id:uid(),name:plan,steps:[]}); order.push(plan); }
     const ex=String(r[1]??"").trim(); if(!ex)continue;
     const typ=String(r[2]??"").trim().toLowerCase();
-    const mode=(typ.startsWith("halt")||typ.startsWith("hold")||typ.startsWith("zeit")||typ.startsWith("time"))?"hold":"reps";
-    const target=Math.max(1,parseDur(r[3],mode==="hold"?30:10));
+    const mode=(typ.startsWith("zeit")||typ.startsWith("time")||typ.startsWith("dauer"))?"time":((typ.startsWith("halt")||typ.startsWith("hold"))?"hold":"reps");
+    const target=Math.max(1,parseDur(r[3],isTimed(mode)?(mode==="time"?60:30):10));
     let sets=parseInt(r[4],10); if(!sets||sets<1)sets=1;
     const rest=Math.max(0,parseDur(r[5],60));
     byName.get(plan).steps.push({id:uid(),name:ex,mode,target,sets,rest});
@@ -704,7 +755,7 @@ function renderPlans(){
   app.querySelectorAll("[data-runplan]").forEach(b=>b.onclick=()=>{const p=state.plans.find(x=>x.id===b.dataset.runplan);if(p&&p.steps.length)startPlan(p);});
 }
 function planCard(p){
-  const preview=p.steps.slice(0,4).map((s,i)=>`<div class="st"><span class="o num">${i+1}</span><span class="sn">${esc(s.name)}</span><span class="sd">${s.sets}× ${s.mode==="hold"?fmtClock(s.target):s.target+" Wdh"} · ${s.rest}s</span></div>`).join("");
+  const preview=p.steps.slice(0,4).map((s,i)=>`<div class="st"><span class="o num">${i+1}</span><span class="sn">${esc(s.name)}</span><span class="sd">${s.sets}× ${isTimed(s.mode)?fmtClock(s.target):s.target+" Wdh"} · ${s.rest}s</span></div>`).join("");
   const more=p.steps.length>4?`<div class="st"><span class="o"></span><span class="sn" style="color:var(--muted)">+ ${p.steps.length-4} weitere</span></div>`:"";
   return `<div class="plancard">
     <div class="pt"><div style="flex:1"><div class="pn">${esc(p.name)}</div><div class="pm">${p.steps.length} Übungen · ≈ ${planEst(p)} min</div></div></div>
@@ -731,7 +782,7 @@ function renderPlanEditor(){
     <div id="steplist">${ p.steps.map((st,i)=>`
       <div class="pe-step">
         <span class="o num">${i+1}</span>
-        <div class="mid"><div class="nm">${esc(st.name)}</div><div class="md">${st.sets}× ${st.mode==="hold"?fmtClock(st.target)+" halten":st.target+" Wdh"} · ${st.rest}s Pause</div></div>
+        <div class="mid"><div class="nm">${esc(st.name)}</div><div class="md">${st.sets}× ${isTimed(st.mode)?fmtClock(st.target)+(st.mode==="time"?" Zeit":" halten"):st.target+" Wdh"} · ${st.rest}s Pause</div></div>
         <div class="ord"><button data-up="${i}">▲</button><button data-down="${i}">▼</button></div>
         <button class="x" data-delstep="${i}">✕</button>
       </div>`).join("") }</div>
@@ -740,12 +791,13 @@ function renderPlanEditor(){
       <div class="eyebrow" style="margin:20px 2px 9px">Übung hinzufügen</div>
       <input class="sname" id="sname" placeholder="Name – z. B. Liegestütze" list="lib2" autocomplete="off" autocapitalize="words" />
       <datalist id="lib2">${Object.values(state.lib).map(o=>`<option value="${esc(o.name)}">`).join("")}</datalist>
-      <div class="modes" style="margin-top:9px">
-        <button data-smode="reps" class="${ui.stepMode==="reps"?"sel":""}">Wiederholungen</button>
+      <div class="modes modes3" style="margin-top:9px">
+        <button data-smode="reps" class="${ui.stepMode==="reps"?"sel":""}">Wdh</button>
         <button data-smode="hold" class="${ui.stepMode==="hold"?"sel":""}">Halten</button>
+        <button data-smode="time" class="${ui.stepMode==="time"?"sel":""}">Zeit</button>
       </div>
       <div class="triple">
-        ${miniStepper("Ziel", "target", ui.stepMode==="hold"?fmtClock(s.target):s.target)}
+        ${miniStepper("Ziel", "target", isTimed(ui.stepMode)?fmtClock(s.target):s.target)}
         ${miniStepper("Sätze","sets",s.sets)}
         ${miniStepper("Pause","rest",s.rest+"s")}
       </div>
@@ -761,7 +813,7 @@ function renderPlanEditor(){
   ov.querySelector("#pname").onblur=()=>{p.name=(ov.querySelector("#pname").value||"Plan").trim()||"Plan";save();};
   ov.querySelector("#delplan").onclick=()=>{state.plans=state.plans.filter(x=>x.id!==p.id);save();ui.planEdit=null;closeOverlay();render();};
 
-  ov.querySelectorAll("[data-smode]").forEach(b=>b.onclick=()=>{ui.stepMode=b.dataset.smode;if(ui.stepMode==="hold"&&s.target<10)s.target=30;if(ui.stepMode==="reps"&&s.target>40)s.target=12;reRenderEditorKeepName();});
+  ov.querySelectorAll("[data-smode]").forEach(b=>b.onclick=()=>{ui.stepMode=b.dataset.smode;if(isTimed(ui.stepMode)&&s.target<10)s.target=ui.stepMode==="time"?60:30;if(ui.stepMode==="reps"&&s.target>40)s.target=12;reRenderEditorKeepName();});
   ov.querySelectorAll("[data-delstep]").forEach(b=>b.onclick=()=>{p.steps.splice(+b.dataset.delstep,1);save();reRenderEditorKeepName();});
   ov.querySelectorAll("[data-up]").forEach(b=>b.onclick=()=>{const i=+b.dataset.up;if(i>0){[p.steps[i-1],p.steps[i]]=[p.steps[i],p.steps[i-1]];save();reRenderEditorKeepName();}});
   ov.querySelectorAll("[data-down]").forEach(b=>b.onclick=()=>{const i=+b.dataset.down;if(i<p.steps.length-1){[p.steps[i+1],p.steps[i]]=[p.steps[i],p.steps[i+1]];save();reRenderEditorKeepName();}});
@@ -777,7 +829,7 @@ function miniStepper(label,field,val){
     <div class="mrow"><button class="mb" data-mini="${field}|-1">–</button><span class="mv">${val}</span><button class="mb" data-mini="${field}|1">+</button></div></div>`;
 }
 function stepAdjust(field,dir){const s=ui._step;
-  if(field==="target"){ if(ui.stepMode==="hold"){s.target=Math.max(5,s.target+dir*5);} else {s.target=Math.max(1,s.target+dir);} }
+  if(field==="target"){ if(isTimed(ui.stepMode)){const step=ui.stepMode==="time"?15:5;s.target=Math.max(5,s.target+dir*step);} else {s.target=Math.max(1,s.target+dir);} }
   else if(field==="sets"){s.sets=Math.max(1,s.sets+dir);}
   else if(field==="rest"){s.rest=Math.max(0,s.rest+dir*15);}
 }
@@ -846,12 +898,14 @@ function renderTechSheet(){
 function openDetail(id){
   const s=state.sessions.find(x=>x.id===id);if(!s)return;
   const d=new Date(s.start),sets=s.exercises.reduce((n,e)=>n+e.sets.length,0);
+  const dur=(s.end-s.start)/1000, rest=s.restSec||0, active=Math.max(0,dur-rest);
   const ov=document.createElement("div");ov.className="overlay";ov.id="ovl";
   ov.innerHTML=`<div class="sheet"><div class="grab"></div><button class="closebtn" id="close">✕</button>
     <h3>${d.getDate()}. ${MONTHS[d.getMonth()]} ${d.getFullYear()}</h3>
-    <p class="ds">${s.planName?esc(s.planName)+" · ":""}${durLabel((s.end-s.start)/1000)} · ${s.exercises.length} Übungen · ${sets} Sätze · ${d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})} Uhr</p>
-    ${ s.exercises.map(ex=>`<div class="det-ex"><div class="dn">${esc(ex.name)} <span class="tag ${ex.mode==="hold"?"hold":"reps"}">${ex.mode==="hold"?"Halten":"Wdh"}</span></div>
-      <div class="dsets">${ex.sets.map((st,i)=>`<span class="setchip"><span class="i">${i+1}</span>${ex.mode==="hold"?fmtClock(st.v):st.v}${ex.mode==="hold"?"":'<span class="i">Wdh</span>'}</span>`).join("")||'<span class="ds">keine Sätze</span>'}</div></div>`).join("") }
+    <p class="ds">${s.planName?esc(s.planName)+" · ":""}${durLabel(dur)} · ${s.exercises.length} Übungen · ${sets} Sätze · ${d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})} Uhr</p>
+    <div class="phaserow"><div class="ph"><span class="phv num">${durLabel(active)}</span><span class="phl">Aktiv</span></div><div class="ph"><span class="phv num">${durLabel(rest)}</span><span class="phl">Pause${s.restCount?" · "+s.restCount+"×":""}</span></div></div>
+    ${ s.exercises.map(ex=>`<div class="det-ex"><div class="dn">${esc(ex.name)} ${ex.equip?`<span class="equiptag">${esc(ex.equip)}</span>`:""}<span class="tag ${modeTag(ex.mode)}">${modeLabel(ex.mode)}</span></div>
+      <div class="dsets">${ex.sets.map((st,i)=>`<span class="setchip"><span class="i">${i+1}</span>${fmtVal(ex.mode,st.v)}${isTimed(ex.mode)?"":'<span class="i">Wdh</span>'}${st.w?`<span class="iw">${st.w} kg</span>`:""}</span>`).join("")||'<span class="ds">keine Sätze</span>'}</div></div>`).join("") }
     <button class="del" id="delsess">Einheit löschen</button></div>`;
   mountOverlay(ov);
   const close=()=>closeOverlay();
@@ -869,17 +923,28 @@ function startPlan(p){
   const queue=[];p.steps.forEach((st,si)=>{for(let k=0;k<st.sets;k++)queue.push({name:st.name,mode:st.mode,target:st.target,rest:st.rest,stepIdx:si,setNo:k+1,setTotal:st.sets});});
   state.active={start:Date.now(),exercises:[],guide:{planName:p.name,queue,idx:0}};ui.showComposer=false;ui.hold=null;ui.rest=null;save();render();acquireWake();
 }
-function endSession(){const a=state.active;const exercises=a.exercises.filter(e=>e.sets.length>0);
-  if(exercises.length>0)state.sessions.push({id:uid(),start:a.start,end:Date.now(),exercises,planName:a.guide?a.guide.planName:null});
+function endSession(){const a=state.active;addRestLog();const exercises=a.exercises.filter(e=>e.sets.length>0);
+  if(exercises.length>0)state.sessions.push({id:uid(),start:a.start,end:Date.now(),exercises,planName:a.guide?a.guide.planName:null,restSec:Math.round(a.restSec||0),restCount:a.restCount||0});
   state.active=null;ui.hold=null;ui.rest=null;ui.showComposer=false;ui.tab="train";save();render();releaseWake();}
 
 /* ---- ticker (nur Text-Updates, kein Re-Render) ---- */
 setInterval(()=>{
   if(!state.active)return;
   const t=document.getElementById("total");if(t)t.textContent=fmtClock((Date.now()-state.active.start)/1000);
-  if(ui.hold){const id=ui.hold.guide?"ghold":"hold-"+ui.hold.exId;const h=document.getElementById(id);if(h)h.textContent=fmtClock((Date.now()-ui.hold.start)/1000);}
+  if(ui.hold){
+    const elapsed=(Date.now()-ui.hold.start)/1000;
+    if(ui.hold.target && !ui.hold.guide){ // Zeit-Countdown im freien Training
+      const rem=ui.hold.target-elapsed;
+      const id="hold-"+ui.hold.exId, h=document.getElementById(id);
+      if(rem<=0){ const ex=state.active.exercises.find(e=>e.id===ui.hold.exId); if(ex){ex.sets.push({v:ui.hold.target});rememberLib(ex.name,ex.mode,ui.hold.target);} ui.hold=null; vib([0,120,80,120]); save(); render(); }
+      else if(h) h.textContent=fmtClock(rem);
+    } else {
+      const id=ui.hold.guide?"ghold":"hold-"+ui.hold.exId, h=document.getElementById(id);
+      if(h) h.textContent=fmtClock(elapsed);
+    }
+  }
   if(ui.rest){const left=(ui.rest.end-Date.now())/1000;const rc=document.getElementById("restcount");
-    if(left<=0){ui.rest=null;vib([0,120,80,120]);updateRestZone();}else if(rc)rc.textContent=fmtClock(left);}
+    if(left<=0){addRestLog();ui.rest=null;save();vib([0,120,80,120]);updateRestZone();}else if(rc)rc.textContent=fmtClock(left);}
 },250);
 
 /* ---- icons ---- */
