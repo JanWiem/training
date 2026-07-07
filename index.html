@@ -165,6 +165,10 @@
   /* rest bar */
 
   /* ---------- PROGRESS TAB ---------- */
+  .weekcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 15px;margin-bottom:14px;display:flex;gap:24px;}
+  .weekcard .wstat{display:flex;flex-direction:column;}
+  .weekcard .wval{font-weight:700;font-size:22px;letter-spacing:-.01em;}
+  .weekcard .wlbl{font-size:11.5px;color:var(--muted);margin-top:2px;}
   .pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 15px;margin-bottom:9px;}
   .pcard .top{display:flex;align-items:center;gap:9px;}
   .pcard .nm{font-weight:700;font-size:15.5px;flex:1;letter-spacing:-.01em;}
@@ -359,7 +363,7 @@ const SEED_MODE={"plank":"hold","hollow hold":"hold","l-sit":"hold","wall sit":"
 const save=()=>{store.set(K.active,state.active);store.set(K.sessions,state.sessions);store.set(K.lib,state.lib);store.set(K.plans,state.plans);store.set(K.tech,state.tech);store.set(K.settings,state.settings);};
 const uid=()=>Math.random().toString(36).slice(2,9);
 const MONTHS=["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
-const APP_VERSION="v10", APP_BUILD="07.07.2026";
+const APP_VERSION="v11", APP_BUILD="07.07.2026";
 
 function fmtClock(sec){sec=Math.max(0,Math.floor(sec));const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;const mm=String(m).padStart(2,"0"),ss=String(s).padStart(2,"0");return h>0?`${h}:${mm}:${ss}`:`${m}:${ss}`;}
 function durLabel(sec){const m=Math.round(sec/60);if(m<1)return "<1 min";if(m<60)return m+" min";const h=Math.floor(m/60),r=m%60;return r?h+" h "+r+" min":h+" h";}
@@ -601,11 +605,25 @@ function aggregate(){
   });
   return Object.values(map).map(o=>({...o,sessions:o.sessions.size})).sort((a,b)=>b.last-a.last);
 }
+function weekSummary(){
+  const since=Date.now()-7*24*60*60*1000;
+  const recent=state.sessions.filter(s=>s.start>=since);
+  const sets=recent.reduce((n,s)=>n+s.exercises.reduce((m,ex)=>m+ex.sets.length,0),0);
+  return {sessions:recent.length,sets};
+}
+function weekCard(){
+  const w=weekSummary();
+  return `<div class="weekcard">
+    <div class="wstat"><span class="wval num">${w.sessions}</span><span class="wlbl">Einheit${w.sessions===1?"":"en"} · 7 Tage</span></div>
+    <div class="wstat"><span class="wval num">${w.sets}</span><span class="wlbl">Sätze · 7 Tage</span></div>
+  </div>`;
+}
 function renderProgress(){
   const data=aggregate();
   app.innerHTML=`
    ${pageHeader("Pro Übung","Fortschritt")}
    <div class="scroll fade-in">
+     ${weekCard()}
      ${ data.length ? data.map(progressCard).join("")
         : `<div class="empty"><span class="em">Noch keine Daten</span>Sobald du Sätze loggst, siehst du hier deine Bestwerte und die letzten Sätze.</div>` }
    </div>`;
