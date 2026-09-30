@@ -10,12 +10,12 @@ werden nur als Timestamps mitgeschrieben. Zielgerät: Smartphone im (Keller-)Gym
 
 ## Dateien
 
-- `index.html` – die komplette App (HTML + CSS + JS inline, ~1.150 Zeilen). Einzige Quelle der Logik.
-- `service-worker.js` – Offline-Cache. `CACHE`-Konstante aktuell `satz-v10`.
+- `index.html` – die komplette App (HTML + CSS + JS inline, ~1.160 Zeilen). Einzige Quelle der Logik.
+- `service-worker.js` – Offline-Cache. `CACHE`-Konstante aktuell `satz-v11`.
 - `manifest.json` – PWA-Metadaten (Farben dort sind die Wahrheit: bg `#FBFBFA`, theme `#FFFFFF`).
 - `icons/` – 4 PNGs (64/192/512/maskable), Stoppuhr-Glyphe, dunkler Grund `#2B2926`.
-- `Trainingsplan-Vorlage.xlsx` – Excel-Vorlage für den Plan-Import (Format s.u.).
-- `Anleitung-Satz.pdf` – Nutzer-Doku. **Stand veraltet (beschreibt noch Timer-Version v1) – muss bei Feature-Änderungen mit aktualisiert werden.**
+- `Trainingsplan-Vorlage.xlsx` – Excel-Vorlage für den Import, 2 Reiter „Pläne“ + „Übungen“ (Format s.u.).
+- `Anleitung-Satz.pdf` – Nutzer-Doku, Stand v11. **Bei nutzersichtbaren Feature-Änderungen mit aktualisieren.**
 
 ## Architektur & Stack – aktueller Stand
 
@@ -61,21 +61,30 @@ Alternative vor** – aber wechsle sie nicht stillschweigend im Vorbeigehen.
 - Bei Schema-Änderungen: Migrationslogik für Bestandsdaten mitliefern, niemals
   bestehende `satz.*`-Daten stillschweigend invalidieren.
 
-## Excel-Plan-Format (Import/Export)
+## Excel-Format (Import/Export)
 
-Header (15 Spalten, exakt diese Reihenfolge):
+Die `.xlsx` hat zwei Reiter (Import findet sie per Name-Regex, Export schreibt beide).
+
+**Reiter „Pläne“** (`PLAN_HEADER`, 15 Spalten, exakt diese Reihenfolge):
 `Plan | Übung | Typ | Ziel | Sätze | Pause | Gerät | Gewicht | Supersatz | Setup | Ablauf | Cues | Atmung | Fehler | Video`
 - Typ-Parsing ist tolerant: `Wdh`/`Halten`/`Zeit` (auch engl. Präfixe hold/time).
 - Mehrere Zeilen mit gleichem Plan-Namen = ein Plan in dieser Reihenfolge.
-- Import ersetzt gleichnamige Pläne. `.csv` wird ebenfalls unterstützt (deutsches Excel).
-- Format-Änderungen immer synchron in: Parser, Export, `Trainingsplan-Vorlage.xlsx`
-  und Anleitung.
+- Import ersetzt gleichnamige Pläne. Technik-Spalten (Setup…Video) landen in `satz.tech`;
+  mehrteilige Felder (Ablauf/Cues/Fehler) sind mit ` | ` getrennt.
+
+**Reiter „Übungen“** (`LIB_HEADER`, 9 Spalten) – pflegt Bibliothek + Technikkarten:
+`Übung | Typ | Setup | Ablauf | Cues | Atmung | Fehler | Video | Löschen`
+- `Löschen` = Ja/x/1 entfernt die Übung aus `satz.lib` und `satz.tech`.
+
+`.csv` wird ebenfalls unterstützt (deutsches Excel, `;`) – enthält aber nur den Pläne-Reiter.
+- Format-Änderungen immer synchron in: Parser, Export, `templatePlanRows()`/`templateLibRows()`,
+  `Trainingsplan-Vorlage.xlsx` und Anleitung.
 
 ## Versionierung & Deploy
 
-- `APP_VERSION` + `APP_BUILD` in `index.html` (aktuell `v10` · `07.07.2026`) – bei jeder
+- `APP_VERSION` + `APP_BUILD` in `index.html` (aktuell `v11` · `07.07.2026`) – bei jeder
   nutzersichtbaren Änderung hochzählen, wird im App-Footer angezeigt.
-- **Synchron dazu die `CACHE`-Konstante in `service-worker.js` erhöhen** (`satz-v10` → `satz-v11`),
+- **Synchron dazu die `CACHE`-Konstante in `service-worker.js` erhöhen** (z. B. `satz-v11` → `satz-v12`),
   sonst sehen installierte PWAs die alte Version.
 - SW-Strategie: cache-first für die App-Shell; Fonts + cdnjs werden zur Laufzeit mitgecacht.
 - Hosting: **GitHub Pages** (Repo-Root, Branch main). Deploy = Dateien committen/pushen.
